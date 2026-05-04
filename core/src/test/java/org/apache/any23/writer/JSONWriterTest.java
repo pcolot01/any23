@@ -40,17 +40,17 @@ public class JSONWriterTest {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         writeContentComplicated(new JSONWriter(baos));
 
-        final String expected = "{\n" + "  \"quads\" : [ [ {\n" + "    \"type\" : \"bnode\",\n"
-                + "    \"value\" : \"bn1\"\n" + "  }, \"http://pred/1\", {\n" + "    \"type\" : \"uri\",\n"
-                + "    \"value\" : \"http://value/1\"\n" + "  }, \"http://graph/1\" ], [ {\n"
-                + "    \"type\" : \"uri\",\n" + "    \"value\" : \"http://sub/2\"\n" + "  }, \"http://pred/2\", {\n"
-                + "    \"type\" : \"literal\",\n" + "    \"value\" : \"language literal\",\n"
-                + "    \"lang\" : \"en\",\n"
-                + "    \"datatype\" : \"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString\"\n"
-                + "  }, \"http://graph/2\" ], [ {\n" + "    \"type\" : \"uri\",\n"
-                + "    \"value\" : \"http://sub/3\"\n" + "  }, \"http://pred/3\", {\n" + "    \"type\" : \"literal\",\n"
-                + "    \"value\" : \"123\",\n" + "    \"lang\" : null,\n" + "    \"datatype\" : \"http://datatype\"\n"
-                + "  }, null ] ]\n" + "}";
+        final String expected = "{\r\n" + "  \"quads\" : [ [ {\r\n" + "    \"type\" : \"bnode\",\r\n"
+                + "    \"value\" : \"bn1\"\r\n" + "  }, \"http://pred/1\", {\r\n" + "    \"type\" : \"uri\",\r\n"
+                + "    \"value\" : \"http://value/1\"\r\n" + "  }, \"http://graph/1\" ], [ {\r\n"
+                + "    \"type\" : \"uri\",\r\n" + "    \"value\" : \"http://sub/2\"\r\n"
+                + "  }, \"http://pred/2\", {\r\n" + "    \"type\" : \"literal\",\r\n"
+                + "    \"value\" : \"language literal\",\r\n" + "    \"lang\" : \"en\",\r\n"
+                + "    \"datatype\" : \"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString\"\r\n"
+                + "  }, \"http://graph/2\" ], [ {\r\n" + "    \"type\" : \"uri\",\r\n"
+                + "    \"value\" : \"http://sub/3\"\r\n" + "  }, \"http://pred/3\", {\r\n"
+                + "    \"type\" : \"literal\",\r\n" + "    \"value\" : \"123\",\r\n" + "    \"lang\" : null,\r\n"
+                + "    \"datatype\" : \"http://datatype\"\r\n" + "  }, null ] ]\r\n" + "}";
         Assert.assertEquals(expected, baos.toString(StandardCharsets.UTF_8));
 
         baos.reset();
@@ -62,15 +62,16 @@ public class JSONWriterTest {
     public void testJSONLDWriting() throws TripleHandlerException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         writeContentComplicated(new JSONLDWriter(baos));
-        final String expected = "[ {\n" + "  \"@graph\" : [ {\n" + "    \"@id\" : \"http://sub/3\",\n"
-                + "    \"http://pred/3\" : [ {\n" + "      \"@type\" : \"http://datatype\",\n"
-                + "      \"@value\" : \"123\"\n" + "    } ]\n" + "  } ],\n" + "  \"@id\" : \"http://any23.org/tmp/\"\n"
-                + "}, {\n" + "  \"@graph\" : [ {\n" + "    \"@id\" : \"_:bn1\",\n" + "    \"http://pred/1\" : [ {\n"
-                + "      \"@id\" : \"http://value/1\"\n" + "    } ]\n" + "  } ],\n" + "  \"@id\" : \"http://graph/1\"\n"
-                + "}, {\n" + "  \"@graph\" : [ {\n" + "    \"@id\" : \"http://sub/2\",\n"
-                + "    \"http://pred/2\" : [ {\n" + "      \"@language\" : \"en\",\n"
-                + "      \"@value\" : \"language literal\"\n" + "    } ]\n" + "  } ],\n"
-                + "  \"@id\" : \"http://graph/2\"\n" + "} ]";
+        final String expected = "[ {\r\n" + "  \"@graph\" : [ {\r\n" + "    \"@id\" : \"http://sub/3\",\r\n"
+                + "    \"http://pred/3\" : [ {\r\n" + "      \"@type\" : \"http://datatype\",\r\n"
+                + "      \"@value\" : \"123\"\r\n" + "    } ]\r\n" + "  } ],\r\n"
+                + "  \"@id\" : \"http://any23.org/tmp/\"\r\n" + "}, {\r\n" + "  \"@graph\" : [ {\r\n"
+                + "    \"@id\" : \"_:bn1\",\r\n" + "    \"http://pred/1\" : [ {\r\n"
+                + "      \"@id\" : \"http://value/1\"\r\n" + "    } ]\r\n" + "  } ],\r\n"
+                + "  \"@id\" : \"http://graph/1\"\r\n" + "}, {\r\n" + "  \"@graph\" : [ {\r\n"
+                + "    \"@id\" : \"http://sub/2\",\r\n" + "    \"http://pred/2\" : [ {\r\n"
+                + "      \"@language\" : \"en\",\r\n" + "      \"@value\" : \"language literal\"\r\n" + "    } ]\r\n"
+                + "  } ],\r\n" + "  \"@id\" : \"http://graph/2\"\r\n" + "} ]";
         Assert.assertEquals(expected, baos.toString(StandardCharsets.UTF_8));
 
         baos.reset();
