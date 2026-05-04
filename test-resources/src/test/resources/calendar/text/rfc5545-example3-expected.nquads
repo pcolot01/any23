@@ -34,7 +34,7 @@ _:node1clu24refx3 <http://www.w3.org/2002/12/cal/icaltzd#categories> "MEETING" <
 _:node1clu24refx3 <http://www.w3.org/2002/12/cal/icaltzd#categories> "PROJECT" <http://bob.example.com/> .
 _:node1clu24refx3 <http://www.w3.org/2002/12/cal/icaltzd#class> "PUBLIC" <http://bob.example.com/> .
 _:node1clu24refx3 <http://www.w3.org/2002/12/cal/icaltzd#summary> "Calendaring Interoperability Planning Meeting" <http://bob.example.com/> .
-_:node1clu24refx3 <http://www.w3.org/2002/12/cal/icaltzd#description> "Discuss how we can test c&s interoperability\nusing iCalendar and other IETF standards." <http://bob.example.com/> .
+_:node1clu24refx3 <http://www.w3.org/2002/12/cal/icaltzd#description> "Discuss how we can test c&s interoperability\r\nusing iCalendar and other IETF standards." <http://bob.example.com/> .
 _:node1clu24refx3 <http://www.w3.org/2002/12/cal/icaltzd#location> "LDB Lobby" <http://bob.example.com/> .
 _:node1clu24refx3 <http://www.w3.org/2002/12/cal/icaltzd#attach> _:node1clu24refx5 <http://bob.example.com/> .
 _:node1clu24refx5 <http://www.w3.org/2002/12/cal/icaltzd#fmttype> "application/postscript" <http://bob.example.com/> .

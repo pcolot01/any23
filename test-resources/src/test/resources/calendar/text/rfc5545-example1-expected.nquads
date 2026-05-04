@@ -28,4 +28,4 @@ _:node1clu1knnlx3 <http://www.w3.org/2002/12/cal/icaltzd#dtend> "1996-09-20T22:0
 _:node1clu1knnlx3 <http://www.w3.org/2002/12/cal/icaltzd#status> "CONFIRMED" <http://bob.example.com/> .
 _:node1clu1knnlx3 <http://www.w3.org/2002/12/cal/icaltzd#categories> "CONFERENCE" <http://bob.example.com/> .
 _:node1clu1knnlx3 <http://www.w3.org/2002/12/cal/icaltzd#summary> "Networld+Interop Conference" <http://bob.example.com/> .
-_:node1clu1knnlx3 <http://www.w3.org/2002/12/cal/icaltzd#description> "Networld+Interop Conferenceand Exhibit\nAtlanta World Congress Center\nAtlanta, Georgia" <http://bob.example.com/> .
+_:node1clu1knnlx3 <http://www.w3.org/2002/12/cal/icaltzd#description> "Networld+Interop Conferenceand Exhibit\r\nAtlanta World Congress Center\r\nAtlanta, Georgia" <http://bob.example.com/> .
