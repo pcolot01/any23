@@ -20,7 +20,7 @@ _:node1cdqplnvmx2 <http://example.org/animals#img> <http://bob.example.com/hedra
 _:node1cdqplnvmx2 <http://example.org/animals#name> "Hedral" <http://bob.example.com/> .
 _:node1cdqplnvmx2 <http://example.org/animals#desc> "Hedral is a male american domestic shorthair, with a fluffy black fur with white paws and belly." <http://bob.example.com/> .
 <http://bob.example.com/> <http://www.w3.org/1999/xhtml/microdata#item> _:node1cdqplnvmx2 <http://bob.example.com/> .
-<urn:isbn:0-330-34032-8> <http://schema.org/author> "Peter F. Hamilton\n    " <http://bob.example.com/> .
-<urn:isbn:0-330-34032-8> <http://schema.org/title> "The Reality Dysfunction\n    " <http://bob.example.com/> .
+<urn:isbn:0-330-34032-8> <http://schema.org/author> "Peter F. Hamilton\r\n    " <http://bob.example.com/> .
+<urn:isbn:0-330-34032-8> <http://schema.org/title> "The Reality Dysfunction\r\n    " <http://bob.example.com/> .
 <urn:isbn:0-330-34032-8> <http://schema.org/pubdate> "1996-01-26"^^<http://www.w3.org/2001/XMLSchema#date> <http://bob.example.com/> .
 <http://bob.example.com/> <http://www.w3.org/1999/xhtml/microdata#item> <urn:isbn:0-330-34032-8> <http://bob.example.com/> .
