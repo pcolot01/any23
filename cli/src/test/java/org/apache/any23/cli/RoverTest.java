@@ -40,7 +40,7 @@ public class RoverTest extends ToolTestBase {
     private static final String[] TARGET_FILES = { "/microdata/microdata-nested.html",
             "/org/apache/any23/extractor/csv/test-semicolon.csv" };
 
-    private static final String[] TARGET_URLS = { "http://twitter.com/micmos", "http://twitter.com/dpalmisano" };
+    private static final String[] TARGET_URLS = { "http://google.com", "https://mail.google.com" };
 
     public RoverTest() {
         super(Rover.class);

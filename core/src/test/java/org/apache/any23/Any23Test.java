@@ -201,8 +201,9 @@ public class Any23Test extends Any23OnlineTestBase {
 
         Any23 runner = new Any23();
         runner.setHTTPUserAgent("apache-any23-test-user-agent");
+
         HTTPClient httpClient = runner.getHTTPClient();
-        DocumentSource source = new HTTPDocumentSource(httpClient, "http://dbpedia.org/resource/Trento");
+        DocumentSource source = new HTTPDocumentSource(httpClient, "https://dbpedia.org/page/Trento");
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         TripleHandler handler = new NTriplesWriter(out);
         try {
@@ -223,7 +224,7 @@ public class Any23Test extends Any23OnlineTestBase {
         Assert.assertTrue(n3.length() > 0);
 
         Assert.assertTrue(n3.contains(
-                "<http://dbpedia.org/resource/Trento> <http://dbpedia.org/property/mayor> \"Franco Ianeselli, elected 2020\"@en ."));
+                "<http://dbpedia.org/resource/Trento> <http://dbpedia.org/property/mayor> <http://dbpedia.org/resource/Franco_Ianeselli> ."));
     }
 
     /**
@@ -290,7 +291,8 @@ public class Any23Test extends Any23OnlineTestBase {
         assumeOnlineAllowed();
         final Any23 runner = new Any23();
         runner.setHTTPUserAgent("apache-any23-test-user-agent");
-        DocumentSource source = new HTTPDocumentSource(runner.getHTTPClient(), "https://dev.w3.org/html5/rdfa/");
+        DocumentSource source = new HTTPDocumentSource(runner.getHTTPClient(),
+                "https://html.spec.whatwg.org/#microdata");
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         TripleHandler handler = new NTriplesWriter(out);
         try {

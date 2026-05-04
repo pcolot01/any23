@@ -33,7 +33,7 @@ public class MimeDetectorTest extends ToolTestBase {
     @Test
     public void testDetectURL() throws Exception {
         assumeOnlineAllowed();
-        runToolCheckExit0("http://twitter.com#micmos");
+        runToolCheckExit0("http://google.com");
     }
 
     @Test

@@ -37,7 +37,7 @@ public class MicrodataParserTest extends ToolTestBase {
 
     @Test
     public void testRunOnHTTPResource() throws Exception {
-        runToolCheckExit0("http://www.imdb.com/title/tt1375666/");
+        runToolCheckExit0("http://www.google.com/");
     }
 
 }
