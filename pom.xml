@@ -18,11 +18,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <!-- Parent directory containing Quality Control configuration -->
   <parent>
-    <groupId>org.apache</groupId>
-    <artifactId>apache</artifactId>
-    <version>26</version>
+    <groupId>lu.infeurope</groupId>
+    <artifactId>QualityControlReports</artifactId>
+    <version>1.5</version>
   </parent>
+
+  <!-- Parent directory containing Quality Control configuration -->
+  <!--  <parent>-->
+  <!--    <groupId>org.apache</groupId>-->
+  <!--    <artifactId>apache</artifactId>-->
+  <!--    <version>26</version>-->
+  <!--  </parent>-->
 
   <groupId>org.apache.any23</groupId>
   <artifactId>apache-any23</artifactId>
@@ -265,6 +273,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <javac.src.version>11</javac.src.version>
     <javac.target.version>11</javac.target.version>
+    <maven.compiler.release.version>11</maven.compiler.release.version>
     <maven.compiler.target>11</maven.compiler.target>
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ssZ</maven.build.timestamp.format>
     <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
@@ -310,21 +319,21 @@
     <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
     <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
     <maven-surefire-plugin.version>3.0.0-M6</maven-surefire-plugin.version>
-    <maven-site-plugin.version>3.12.0</maven-site-plugin.version>
-    <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
+    <maven-site-plugin.version>4.0.0-M16</maven-site-plugin.version>
+    <maven-changes-plugin.version>3.0.0-M3</maven-changes-plugin.version>
     <maven-project-info-reports-plugin.version>3.3.0</maven-project-info-reports-plugin.version>
     <maven-jxr-plugin.version>3.1.1</maven-jxr-plugin.version>
-    <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+    <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
     <apache-rat-plugin.version>0.13</apache-rat-plugin.version>
     <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
     <maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
     <maven-invoker-plugin.version>3.2.2</maven-invoker-plugin.version>
-    <spotbugs-maven-plugin.version>4.7.0.0</spotbugs-maven-plugin.version>
+    <spotbugs-maven-plugin.version>4.9.8.3</spotbugs-maven-plugin.version>
     <forbiddenapis.version>3.3</forbiddenapis.version>
     <formatter-maven-plugin.version>2.18.0</formatter-maven-plugin.version>
     <ossindex-maven-plugin.version>3.2.0</ossindex-maven-plugin.version>
     <maven-enforcer-plugin.version>3.0.0</maven-enforcer-plugin.version>
-    <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
+    <jacoco-maven-plugin.version>0.8.14</jacoco-maven-plugin.version>
 
     <!--
      | Any23 website has to be stored in SVN
@@ -342,6 +351,11 @@
     <sonar.projectVersion>${project.version}</sonar.projectVersion>
     <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/jacoco-report-aggregate/target/site/
       jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+
+    <dependency-check-maven.version>12.2.1</dependency-check-maven.version>
+    <checkstyle.version>13.4.1</checkstyle.version>
+    <plugin.version></plugin.version>
+    <maven-remote-resources-plugin.version>1.7.0</maven-remote-resources-plugin.version>
   </properties>
 
   <dependencyManagement>
@@ -821,33 +835,68 @@
             </execution>
           </executions>
         </plugin>
-
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>${maven-checkstyle-plugin.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>com.puppycrawl.tools</groupId>
+              <artifactId>checkstyle</artifactId>
+              <version>${checkstyle.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
       </plugins>
     </pluginManagement>
 
     <plugins>
-      <plugin>
-        <groupId>org.sonatype.ossindex.maven</groupId>
-        <artifactId>ossindex-maven-plugin</artifactId>
-        <version>${ossindex-maven-plugin.version}</version>
-        <configuration>
-          <fail>true</fail>
-          <excludeVulnerabilityIds>
-            <!-- https://ossindex.sonatype.org/vulnerability/af5f9c26-c09d-401f-a7fc-0785eeabeab3?component-type=maven&component-name=org.apache.poi.poi -->
-            <!-- Remove once we upgrade to org.apache.tika:tika-parsers-standard-package:jar:2.3.0 -->
-            <exclude>af5f9c26-c09d-401f-a7fc-0785eeabeab3</exclude>
-          </excludeVulnerabilityIds>
-        </configuration>
-        <executions>
-          <execution>
-            <id>audit-dependencies</id>
-            <phase>validate</phase>
-            <goals>
-              <goal>audit</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+
+    <!-- Create Cache (4 hours) using mvn org.owasp:dependency-check-maven:update-only --><!--      <plugin>-->
+<!--        <groupId>org.owasp</groupId>-->
+<!--        <artifactId>dependency-check-maven</artifactId>-->
+<!--        <version>${dependency-check-maven.version}</version>-->
+<!--        <configuration>-->
+<!--          <nvdApiKey>8747fbe3-d8c0-4746-9ab8-057c940c3cb9</nvdApiKey>-->
+<!--          <nvdApiDelay>3000</nvdApiDelay>-->
+<!--          <dataDirectory>D:/OWASP.Cache/</dataDirectory>-->
+<!--          <ossIndexAnalyzerUrl>https://api.guide.sonatype.com</ossIndexAnalyzerUrl>-->
+<!--          <ossIndexUsername>pcolot@infeurope.lu</ossIndexUsername>-->
+<!--          <ossIndexPassword>sonatype_pat_4NOJVVbZoUbpR-e1KyFpMTFnMktsjUul3pNqtm5M0ZyLiT52</ossIndexPassword>-->
+<!--        </configuration>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <goals>-->
+<!--              <goal>check</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
+
+    <!-- to be used only on existing cache to be transfered in specific Profile -->
+<!--      <plugin>-->
+<!--        <groupId>org.sonatype.ossindex.maven</groupId>-->
+<!--        <artifactId>ossindex-maven-plugin</artifactId>-->
+<!--        <version>${ossindex-maven-plugin.version}</version>-->
+<!--        <configuration>-->
+<!--          <fail>true</fail>-->
+<!--          <excludeVulnerabilityIds>-->
+<!--            &lt;!&ndash; https://ossindex.sonatype.org/vulnerability/af5f9c26-c09d-401f-a7fc-0785eeabeab3?component-type=maven&component-name=org.apache.poi.poi &ndash;&gt;-->
+<!--            &lt;!&ndash; Remove once we upgrade to org.apache.tika:tika-parsers-standard-package:jar:2.3.0 &ndash;&gt;-->
+<!--            <exclude>af5f9c26-c09d-401f-a7fc-0785eeabeab3</exclude>-->
+<!--          </excludeVulnerabilityIds>-->
+<!--        </configuration>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <id>audit-dependencies</id>-->
+<!--            <phase>validate</phase>-->
+<!--            <goals>-->
+<!--              <goal>audit</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
+
       <plugin>
         <groupId>de.thetaphi</groupId>
         <artifactId>forbiddenapis</artifactId>
@@ -887,6 +936,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-remote-resources-plugin</artifactId>
+        <version>${maven-remote-resources-plugin.version}</version>
         <executions>
           <execution>
             <goals>
@@ -924,6 +974,7 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>${maven-compiler-plugin.version}</version>
         <configuration>
+          <release>${maven.compiler.release.version}</release>
           <source>${javac.src.version}</source>
           <target>${javac.target.version}</target>
         </configuration>
@@ -1022,33 +1073,33 @@
   <reporting>
     <plugins>
       <!-- Main project infos. -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>${maven-project-info-reports-plugin.version}</version>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>ci-management</report>
-              <report>dependencies</report>
-              <report>dependency-convergence</report>
-              <report>dependency-info</report>
-              <report>dependency-management</report>
-              <report>distribution-management</report>
-              <report>index</report>
-              <report>issue-management</report>
-              <report>licenses</report>
-              <report>mailing-lists</report>
-              <report>modules</report>
-              <report>plugin-management</report>
-              <report>plugins</report>
-              <report>scm</report>
-              <report>summary</report>
-              <report>team</report>
-            </reports>
-          </reportSet>
-        </reportSets>
-      </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-project-info-reports-plugin</artifactId>-->
+<!--        <version>${maven-project-info-reports-plugin.version}</version>-->
+<!--        <reportSets>-->
+<!--          <reportSet>-->
+<!--            <reports>-->
+<!--              <report>index</report>-->
+<!--              <report>issue-management</report>-->
+<!--              <report>licenses</report>-->
+<!--              <report>mailing-lists</report>-->
+<!--              <report>modules</report>-->
+<!--              <report>plugin-management</report>-->
+<!--              <report>plugins</report>-->
+<!--              <report>scm</report>-->
+<!--              <report>summary</report>-->
+<!--              <report>team</report>-->
+<!--              <report>ci-management</report>-->
+<!--              <report>dependencies</report>-->
+<!--              <report>dependency-convergence</report>-->
+<!--              <report>dependency-info</report>-->
+<!--              <report>dependency-management</report>-->
+<!--              <report>distribution-management</report>-->
+<!--            </reports>-->
+<!--          </reportSet>-->
+<!--        </reportSets>-->
+<!--      </plugin>-->
 
       <!-- Javadoc plugin. -->
       <plugin>
@@ -1237,47 +1288,47 @@
             </dependencies>
             <configuration>
               <locales>en</locales>
-              <reportPlugins>
-                <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-project-info-reports-plugin</artifactId>
-                  <version>${maven-project-info-reports-plugin.version.version}</version>
-                  <configuration>
-                    <dependencyDetailsEnabled>false</dependencyDetailsEnabled>
-                    <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
-                    <anonymousConnection>scm:git:http://git.apache.org/any23.git</anonymousConnection>
-                    <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/any23.git</developerConnection>
-                    <webAccessUrl>https://gitbox.apache.org/repos/asf/any23.git</webAccessUrl>
-                  </configuration>
-                  <reportSets>
-                    <reportSet>
-                      <reports>
-                        <report>index</report>
-                        <report>mailing-list</report>
-                        <report>project-team</report>
-                        <report>scm</report>
-                        <report>cim</report>
-                        <report>issue-tracking</report>
-                        <report>license</report>
-                      </reports>
-                    </reportSet>
-                  </reportSets>
-                </plugin>
+<!--              <reportPlugins>-->
+<!--                <plugin>-->
+<!--                  <groupId>org.apache.maven.plugins</groupId>-->
+<!--                  <artifactId>maven-project-info-reports-plugin</artifactId>-->
+<!--                  <version>${maven-project-info-reports-plugin.version.version}</version>-->
+<!--                  <configuration>-->
+<!--                    <dependencyDetailsEnabled>false</dependencyDetailsEnabled>-->
+<!--                    <dependencyLocationsEnabled>false</dependencyLocationsEnabled>-->
+<!--                    <anonymousConnection>scm:git:http://git.apache.org/any23.git</anonymousConnection>-->
+<!--                    <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/any23.git</developerConnection>-->
+<!--                    <webAccessUrl>https://gitbox.apache.org/repos/asf/any23.git</webAccessUrl>-->
+<!--                  </configuration>-->
+<!--                  <reportSets>-->
+<!--                    <reportSet>-->
+<!--                      <reports>-->
+<!--                        <report>index</report>-->
+<!--                        <report>mailing-list</report>-->
+<!--                        <report>project-team</report>-->
+<!--                        <report>scm</report>-->
+<!--                        <report>cim</report>-->
+<!--                        <report>issue-tracking</report>-->
+<!--                        <report>license</report>-->
+<!--                      </reports>-->
+<!--                    </reportSet>-->
+<!--                  </reportSets>-->
+<!--                </plugin>-->
 
-                <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-javadoc-plugin</artifactId>
-                  <version>${maven-javadoc-plugin.version}</version>
-                  <reportSets>
-                    <reportSet>
-                      <id>html</id>
-                      <reports>
-                        <report>aggregate</report>
-                      </reports>
-                    </reportSet>
-                  </reportSets>
-                </plugin>
-              </reportPlugins>
+<!--                <plugin>-->
+<!--                  <groupId>org.apache.maven.plugins</groupId>-->
+<!--                  <artifactId>maven-javadoc-plugin</artifactId>-->
+<!--                  <version>${maven-javadoc-plugin.version}</version>-->
+<!--                  <reportSets>-->
+<!--                    <reportSet>-->
+<!--                      <id>html</id>-->
+<!--                      <reports>-->
+<!--                        <report>aggregate</report>-->
+<!--                      </reports>-->
+<!--                    </reportSet>-->
+<!--                  </reportSets>-->
+<!--                </plugin>-->
+<!--              </reportPlugins>-->
             </configuration>
           </plugin>
 
