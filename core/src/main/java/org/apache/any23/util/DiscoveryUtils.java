@@ -137,7 +137,7 @@ public class DiscoveryUtils {
             throw new IllegalArgumentException("Invalid JAR location.");
         }
         final String jarLocation = sections[0].substring(FILE_PREFIX.length());
-        final String packagePath = sections[1].substring(1);
+        final String packagePath = sections[1].substring(1).replace(File.separator, "/");
 
         try {
             @SuppressWarnings("resource")
