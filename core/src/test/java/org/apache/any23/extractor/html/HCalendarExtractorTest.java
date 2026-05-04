@@ -157,7 +157,7 @@ public class HCalendarExtractorTest extends AbstractExtractorTestCase {
                 assertContains(subject, vICAL.uid, "uid1@host.com");
                 assertContains(subject, vICAL.summary, "Networld+Interop Conference");
                 assertContains(subject, vICAL.description,
-                        "Networld+Interop Conference and Exhibit Atlanta World Congress\n"
+                        "Networld+Interop Conference and Exhibit Atlanta World Congress\r\n"
                                 + "  Center Atlanta, Georgia");
                 assertContains(subject, vICAL.categories, "Conference");
                 assertContains(subject, vICAL.status, "CONFIRMED");
@@ -271,7 +271,7 @@ public class HCalendarExtractorTest extends AbstractExtractorTestCase {
 
         assertContains(event, vICAL.dtstart, "20051005T1630-0700");
         assertContains(event, vICAL.dtend, "20051005T1645-0700");
-        assertContains(event, vICAL.summary, "Welcome!\n      John Battelle,\n      Tim O'Reilly");
+        assertContains(event, vICAL.summary, "Welcome!\r\n      John Battelle,\r\n      Tim O'Reilly");
     }
 
     @Test
@@ -322,8 +322,8 @@ public class HCalendarExtractorTest extends AbstractExtractorTestCase {
         assertContains(event, vICAL.dtend, "2006-01-20");
         assertContains(event, vICAL.location, "Maryland");
         assertContains(event, vICAL.summary, "3rd PAW ftf meeting");
-        assertContains(event, vICAL.description, "RESOLUTION: to have a\n      3rd PAW ftf meeting \n"
-                + "      18-19 Jan in \n      Maryland; location contingent" + " on confirmation from timbl");
+        assertContains(event, vICAL.description, "RESOLUTION: to have a\r\n      3rd PAW ftf meeting \r\n"
+                + "      18-19 Jan in \r\n      Maryland; location contingent" + " on confirmation from timbl");
     }
 
     @Test

@@ -78,9 +78,9 @@ public class EmbeddedJSONLDExtractorTest extends AbstractExtractorTestCase {
         assertStatementsSize(null, null, null, 375);
         assertContains(RDFUtils.iri("http://schema.org/name"), "Weezer & Pixies\u0008");
         assertContains(RDFUtils.iri("http://schema.org/description"),
-                "#1 MAGIC SHOW IN L.A.\nThe current WINNER of the CW’s Penn & Teller’s FOOL US, Illusionist "
+                "#1 MAGIC SHOW IN L.A.\r\nThe current WINNER of the CW’s Penn & Teller’s FOOL US, Illusionist "
                         + "extraordinaire Ivan Amodei is on a national tour with his show INTIMATE ILLUSIONS."
-                        + "\n\nCurrently, on an ei...");
+                        + "\r\n\r\nCurrently, on an ei...");
     }
 
     @Test

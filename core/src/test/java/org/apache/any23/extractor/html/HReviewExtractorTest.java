@@ -82,11 +82,12 @@ public class HReviewExtractorTest extends AbstractExtractorTestCase {
                 assertContains(review, vDCTERMS.date, "20050418T2300-0700");
 
                 assertContains(vREVIEW.text,
-                        "Crepes on Cole is one of the best little \n" + "      creperies in San Francisco.\n      "
-                                + "Excellent food and service. Plenty of tables in a variety of sizes\n"
-                                + "      for parties large and small.  " + "Window seating makes for excellent\n      "
-                                + "people watching to/from the N-Judah which stops right outside.\n"
-                                + "      I've had many fun social gatherings here, as well as gotten\n"
+                        "Crepes on Cole is one of the best little \r\n" + "      creperies in San Francisco.\r\n      "
+                                + "Excellent food and service. Plenty of tables in a variety of sizes\r\n"
+                                + "      for parties large and small.  "
+                                + "Window seating makes for excellent\r\n      "
+                                + "people watching to/from the N-Judah which stops right outside.\r\n"
+                                + "      I've had many fun social gatherings here, as well as gotten\r\n"
                                 + "      plenty of work done thanks to neighborhood WiFi.");
 
                 assertContains(null, vREVIEW.hasReview, review);
@@ -126,20 +127,19 @@ public class HReviewExtractorTest extends AbstractExtractorTestCase {
                 assertContains(review, vREVIEW.title, "Cafe Borrone");
                 assertContains(review, vDCTERMS.date, "20050428T2130-0700");
 
-                assertContains(vREVIEW.text,
-                        "This \n    cafe\n    " + "is a welcoming oasis on " + "the Peninsula.\n    "
-                                + "It even has a fountain outside which nearly eliminates\n    "
-                                + "the sounds of El Camino traffic.  " + "Next door to a superb indy bookstore,\n    "
-                                + "Cafe Borrone is an ideal spot to grab a\n    coffee\n    or "
-                                + "a meal to accompany a newly purchased book or imported periodical.\n"
-                                + "    Soups and\n    sandwich\n    specials rotate daily.  "
-                                + "The corn chowder with croutons and big chunks of cheese\n    "
-                                + "goes especially well with a freshly toasted mini-baguette.  "
-                                + "Evenings are\n    often crowded and may require sharing a table "
-                                + "with a perfect stranger.\n    "
-                                + "Espresso\n    afficionados will appreciate the\n    Illy coffee.\n    "
-                                + "Noise levels can vary from peaceful in the late mornings to nearly overwhelming on\n"
-                                + "    jazz band nights.");
+                assertContains(vREVIEW.text, "This \r\n    cafe\r\n    " + "is a welcoming oasis on "
+                        + "the Peninsula.\r\n    " + "It even has a fountain outside which nearly eliminates\r\n    "
+                        + "the sounds of El Camino traffic.  " + "Next door to a superb indy bookstore,\r\n    "
+                        + "Cafe Borrone is an ideal spot to grab a\r\n    coffee\r\n    or "
+                        + "a meal to accompany a newly purchased book or imported periodical.\r\n"
+                        + "    Soups and\r\n    sandwich\r\n    specials rotate daily.  "
+                        + "The corn chowder with croutons and big chunks of cheese\r\n    "
+                        + "goes especially well with a freshly toasted mini-baguette.  "
+                        + "Evenings are\r\n    often crowded and may require sharing a table "
+                        + "with a perfect stranger.\r\n    "
+                        + "Espresso\r\n    afficionados will appreciate the\r\n    Illy coffee.\r\n    "
+                        + "Noise levels can vary from peaceful in the late mornings to nearly overwhelming on\r\n"
+                        + "    jazz band nights.");
 
                 assertContains(null, vREVIEW.hasReview, review);
                 assertContains(vREVIEW.type, "business");
@@ -175,10 +175,10 @@ public class HReviewExtractorTest extends AbstractExtractorTestCase {
 
                 assertContains(vREVIEW.text,
                         "\"The people thought they were just being rewarded for "
-                                + "treating others\n       as they like to be treated, for "
-                                + "obeying stop signs and curing diseases,\n       for mailing "
-                                + "letters with the address of the sender... Don't wake me,\n "
-                                + "      I plan on sleeping in...\"\n     \n     \"Nothing Better\""
+                                + "treating others\r\n       as they like to be treated, for "
+                                + "obeying stop signs and curing diseases,\r\n       for mailing "
+                                + "letters with the address of the sender... Don't wake me,\r\n "
+                                + "      I plan on sleeping in...\"\r\n     \r\n     \"Nothing Better\""
                                 + " is a great track on this album, too...");
 
                 RepositoryResult<Statement> reviewSubjects = getStatements(null, vREVIEW.hasReview, review);

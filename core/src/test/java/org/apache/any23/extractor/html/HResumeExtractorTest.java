@@ -70,10 +70,10 @@ public class HResumeExtractorTest extends AbstractExtractorTestCase {
         assertContains(person, vDOAC.summary, (Resource) null);
 
         assertContains(person, vDOAC.summary,
-                "Steve Ganz is passionate about connecting people,\n"
-                        + "semantic markup, sushi, and disc golf - not necessarily in that order.\n"
-                        + "Currently obsessed with developing the user experience at LinkedIn,\n"
-                        + "Steve is a second generation Silicon Valley geek and a veteran web\n"
+                "Steve Ganz is passionate about connecting people,\r\n"
+                        + "semantic markup, sushi, and disc golf - not necessarily in that order.\r\n"
+                        + "Currently obsessed with developing the user experience at LinkedIn,\r\n"
+                        + "Steve is a second generation Silicon Valley geek and a veteran web\r\n"
                         + "professional who has been building human-computer interfaces since 1994.");
 
         assertContains(person, vFOAF.isPrimaryTopicOf, (Resource) null);
@@ -115,7 +115,7 @@ public class HResumeExtractorTest extends AbstractExtractorTestCase {
 
         String[] names = new String[] { "LinkedIn Corporation", "PayPal, an eBay Company", "McAfee, Inc.",
                 "Printable Technologies", "Collabria, Inc.", "Self-employed", "3G Productions",
-                "Lee Strasberg Theatre and Film\n" + "\tInstitute", "Leland High School" };
+                "Lee Strasberg Theatre and Film\r\n" + "\tInstitute", "Leland High School" };
 
         for (String name : names)
             Assert.assertTrue(checkSet.contains(name));
@@ -136,11 +136,11 @@ public class HResumeExtractorTest extends AbstractExtractorTestCase {
         assertContains(person, vDOAC.summary, (Resource) null);
 
         assertContains(person, vDOAC.summary,
-                "Senior Systems\n              Analyst/Developer.\n              "
-                        + "Experienced in the analysis, design and\n              "
-                        + "implementation of distributed, multi-tier\n              "
-                        + "applications using Microsoft\n              technologies.\n"
-                        + "              Specialising in data capture applications on the\n" + "              Web.");
+                "Senior Systems\r\n              Analyst/Developer.\r\n              "
+                        + "Experienced in the analysis, design and\r\n              "
+                        + "implementation of distributed, multi-tier\r\n              "
+                        + "applications using Microsoft\r\n              technologies.\r\n"
+                        + "              Specialising in data capture applications on the\r\n" + "              Web.");
 
         assertContains(person, vFOAF.isPrimaryTopicOf, (Resource) null);
 

@@ -280,11 +280,12 @@ public class RDFMergerTest extends AbstractExtractorTestCase {
                 assertContains(review, vREVIEW.title, "Crepes on Cole is awesome");
                 assertContains(review, vDCTERMS.date, "20050418T2300-0700");
                 assertContains(vREVIEW.text,
-                        "Crepes on Cole is one of the best little \n" + "      creperies in San Francisco.\n      "
-                                + "Excellent food and service. Plenty of tables in a variety of sizes\n"
-                                + "      for parties large and small.  " + "Window seating makes for excellent\n      "
-                                + "people watching to/from the N-Judah which stops right outside.\n"
-                                + "      I've had many fun social gatherings here, as well as gotten\n"
+                        "Crepes on Cole is one of the best little \r\n" + "      creperies in San Francisco.\r\n      "
+                                + "Excellent food and service. Plenty of tables in a variety of sizes\r\n"
+                                + "      for parties large and small.  "
+                                + "Window seating makes for excellent\r\n      "
+                                + "people watching to/from the N-Judah which stops right outside.\r\n"
+                                + "      I've had many fun social gatherings here, as well as gotten\r\n"
                                 + "      plenty of work done thanks to neighborhood WiFi.");
 
                 assertContains(null, vREVIEW.hasReview, review);
@@ -356,10 +357,10 @@ public class RDFMergerTest extends AbstractExtractorTestCase {
 
                 assertContains(vREVIEW.text,
                         "\"The people thought they were just being rewarded for "
-                                + "treating others\n       as they like to be treated, for "
-                                + "obeying stop signs and curing diseases,\n       for mailing "
-                                + "letters with the address of the sender... Don't wake me,\n "
-                                + "      I plan on sleeping in...\"\n     \n     \"Nothing Better\""
+                                + "treating others\r\n       as they like to be treated, for "
+                                + "obeying stop signs and curing diseases,\r\n       for mailing "
+                                + "letters with the address of the sender... Don't wake me,\r\n "
+                                + "      I plan on sleeping in...\"\r\n     \r\n     \"Nothing Better\""
                                 + " is a great track on this album, too...");
 
                 RepositoryResult<Statement> whatHasAReview = getStatements(null, vREVIEW.hasReview, review);
