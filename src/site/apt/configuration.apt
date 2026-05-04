@@ -98,7 +98,7 @@ any23.extract(extractionParameters, "http://path/to/doc", tripleHandler);
 *-------------------------------------------+-------------------------------+------------------------------------------------------------------------------------+
 |any23.http.user.agent.default              |Apache Any23-CLI                      |User Agent Name used for HTTP requests.                                             |
 *-------------------------------------------+-------------------------------+------------------------------------------------------------------------------------+
-|any23.http.client.timeout                  |10000 (10 secs)                |Timeout in milliseconds for a HTTP request.                                         |
+|any23.http.client.timeout                  |60000 (60 secs)                |Timeout in milliseconds for a HTTP request.                                         |
 *-------------------------------------------+-------------------------------+------------------------------------------------------------------------------------+
 |any23.http.client.max.connections          |5                              |Max number of concurrent HTTP connections allowed by the internal Apache Any23 HTTP client.|
 *-------------------------------------------+-------------------------------+------------------------------------------------------------------------------------+

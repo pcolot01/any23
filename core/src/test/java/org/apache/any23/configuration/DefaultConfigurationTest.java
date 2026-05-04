@@ -127,7 +127,7 @@ public class DefaultConfigurationTest {
     @Test
     public void testGetPropertyIntOrFailOk() {
         final int value = configuration.getPropertyIntOrFail("any23.http.client.timeout");
-        Assert.assertEquals(10000, value);
+        Assert.assertEquals(60000, value);
     }
 
     @Test(expected = NumberFormatException.class)
